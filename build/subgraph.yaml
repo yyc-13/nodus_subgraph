@@ -1,0 +1,33 @@
+specVersion: 0.0.5
+schema:
+  file: schema.graphql
+dataSources:
+  - kind: ethereum
+    name: Nodus
+    network: arbitrum-goerli
+    source:
+      address: "0x5B866dc14009e05FdB42C7337AB410Eef429c83A"
+      abi: Nodus
+      startBlock: 26511609
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - Donation
+        - OwnershipTransferred
+        - PurchaseContent
+        - PurchaseMembership
+      abis:
+        - name: Nodus
+          file: Nodus/abis/Nodus.json
+      eventHandlers:
+        - event: Donation(string,address,uint256)
+          handler: handleDonation
+        - event: OwnershipTransferred(indexed address,indexed address)
+          handler: handleOwnershipTransferred
+        - event: PurchaseContent(string,address)
+          handler: handlePurchaseContent
+        - event: PurchaseMembership(string,address)
+          handler: handlePurchaseMembership
+      file: Nodus/Nodus.wasm
