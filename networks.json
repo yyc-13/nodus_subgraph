@@ -1,0 +1,8 @@
+{
+  "arbitrum-goerli": {
+    "Nodus": {
+      "address": "0x5B866dc14009e05FdB42C7337AB410Eef429c83A",
+      "startBlock": 26511609
+    }
+  }
+}
